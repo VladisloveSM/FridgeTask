@@ -16,6 +16,13 @@ namespace FridgeApi
 {
     public class Startup
     {
+        public static IConfigurationRoot ConfString { get; set; }
+
+        public Startup(Microsoft.AspNetCore.Hosting.IHostingEnvironment hostEnv)
+        {
+            ConfString = new ConfigurationBuilder().SetBasePath(hostEnv.ContentRootPath).AddJsonFile("dbsettings.json").Build();
+        }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
